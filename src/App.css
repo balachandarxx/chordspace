@@ -4,8 +4,16 @@
 
 body {
   margin: 0;
-  background: #08070b;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #151020,
+      #08070b 55%
+    );
+
   color: white;
+
   font-family:
     Inter,
     system-ui,
@@ -15,67 +23,292 @@ body {
     sans-serif;
 }
 
+button,
+select {
+  font-family: inherit;
+}
+
 .app {
-  width: min(1200px, 94vw);
+  width: min(1280px, 96vw);
+
   min-height: 100vh;
 
   margin: 0 auto;
-  padding: 32px 0;
+
+  padding: 22px 0;
 }
+
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .topbar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 
-  margin-bottom: 22px;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 11px;
 }
 
-.topbar h1 {
+.branding {
+  flex-shrink: 0;
+}
+
+.branding h1 {
   margin: 0;
 
-  font-size: 28px;
+  color: white;
+
+  font-size: 27px;
   font-weight: 500;
 
   letter-spacing: 5px;
 }
 
-.topbar h1 span {
+.branding h1 span {
   color: #c4b5fd;
 }
 
-.topbar p {
-  margin: 7px 0 0;
+.branding p {
+  margin: 6px 0 0;
 
   color: #77727f;
 
-  font-size: 12px;
+  font-size: 11px;
 
   letter-spacing: 2px;
 }
 
-.status {
+.topControls {
   display: flex;
+
   align-items: center;
 
-  gap: 9px;
+  justify-content: flex-end;
 
-  padding: 10px 16px;
+  gap: 7px;
 
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  flex-wrap: wrap;
+}
+
+.controlLabel {
+  padding-left: 7px;
+
+  color: #706b76;
+
+  font-size: 7px;
+
+  letter-spacing: 1.4px;
+}
+
+/* =========================================================
+   KEY
+   ========================================================= */
+
+.keySelector {
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  padding: 4px;
 
   border-radius: 999px;
 
-  background: rgba(255, 255, 255, 0.04);
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  background:
+    rgba(255, 255, 255, 0.04);
+}
+
+.keySelector select {
+  border: none;
+
+  outline: none;
+
+  padding: 7px 10px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(196, 181, 253, 0.13);
+
+  color: white;
+
+  font-size: 10px;
+
+  cursor: pointer;
+}
+
+.keySelector option {
+  background: #17131e;
+  color: white;
+}
+
+/* =========================================================
+   ORCHESTRA FALLBACK
+   ========================================================= */
+
+.layerSelector {
+  display: flex;
+
+  align-items: center;
+
+  gap: 3px;
+
+  padding: 4px;
+
+  border-radius: 999px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  background:
+    rgba(255, 255, 255, 0.04);
+}
+
+.layerButton {
+  display: grid;
+
+  place-items: center;
+
+  width: 27px;
+  height: 27px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  padding: 0;
+
+  background: transparent;
+
+  color: #716c78;
+
+  font-size: 9px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.layerButton:hover {
+  color: white;
+}
+
+.layerButton.activeLayer {
+  color: white;
+
+  background:
+    rgba(139, 92, 246, 0.32);
+
+  transform:
+    scale(1.06);
+
+  box-shadow:
+    0 0 14px
+    rgba(139, 92, 246, 0.25);
+}
+
+/* =========================================================
+   HAND SELECTOR
+   ========================================================= */
+
+.handSelector {
+  display: flex;
+
+  align-items: center;
+
+  gap: 3px;
+
+  padding: 4px;
+
+  border-radius: 999px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  background:
+    rgba(255, 255, 255, 0.04);
+}
+
+.handOption {
+  border: none;
+
+  padding: 7px 10px;
+
+  border-radius: 999px;
+
+  background: transparent;
+
+  color: #85818c;
+
+  font-size: 10px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.handOption:hover {
+  color: white;
+}
+
+.handOption.activeHand {
+  color: white;
+
+  background:
+    rgba(196, 181, 253, 0.16);
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 10px 13px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.04);
 
   color: #c5c1cb;
 
-  font-size: 13px;
+  font-size: 10px;
+
+  white-space: nowrap;
 }
 
 .statusDot {
   width: 7px;
   height: 7px;
+
+  flex-shrink: 0;
 
   border-radius: 50%;
 
@@ -86,6 +319,226 @@ body {
     rgba(196, 181, 253, 0.9);
 }
 
+/* =========================================================
+   CONDUCTOR PANEL
+   ========================================================= */
+
+.conductorPanel {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  min-height: 42px;
+
+  margin-bottom: 9px;
+
+  padding: 7px 10px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-radius: 15px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  opacity: 0.56;
+
+  transition:
+    opacity 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.conductorPanel.detected {
+  opacity: 1;
+
+  border-color:
+    rgba(196, 181, 253, 0.16);
+
+  background:
+    rgba(139, 92, 246, 0.055);
+
+  box-shadow:
+    0 0 25px
+    rgba(139, 92, 246, 0.06);
+}
+
+.conductorHeading {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 105px;
+}
+
+.conductorHeading > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.conductorHeading strong {
+  color:
+    rgba(255, 255, 255, 0.75);
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+}
+
+.conductorHeading span {
+  color:
+    rgba(255, 255, 255, 0.3);
+
+  font-size: 8px;
+}
+
+.conductorDot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(139, 92, 246, 0.55);
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.conductorPanel.detected
+.conductorDot {
+  background: #a78bfa;
+
+  box-shadow:
+    0 0 13px
+    rgba(167, 139, 250, 0.85);
+}
+
+.conductorCount {
+  display: flex;
+
+  align-items: baseline;
+
+  min-width: 72px;
+
+  gap: 4px;
+
+  color: white;
+
+  font-size: 21px;
+
+  font-weight: 300;
+}
+
+.conductorCount small {
+  color:
+    rgba(255, 255, 255, 0.34);
+
+  font-size: 8px;
+
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   LAYER LEGEND
+   ========================================================= */
+
+.orchestraLegend {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 5px;
+}
+
+.layerChip {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 5px 8px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.055);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.02);
+
+  color:
+    rgba(255, 255, 255, 0.22);
+
+  font-size: 8px;
+
+  transition:
+    color 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.layerChip.active {
+  color:
+    rgba(255, 255, 255, 0.92);
+
+  background:
+    rgba(139, 92, 246, 0.1);
+
+  border-color:
+    rgba(196, 181, 253, 0.15);
+}
+
+.layerNumber {
+  display: grid;
+
+  place-items: center;
+
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.055);
+
+  font-size: 7px;
+}
+
+.layerChip.active
+.layerNumber {
+  background:
+    rgba(139, 92, 246, 0.4);
+
+  box-shadow:
+    0 0 8px
+    rgba(139, 92, 246, 0.2);
+}
+
+/* =========================================================
+   CAMERA
+   ========================================================= */
+
 .cameraStage {
   position: relative;
 
@@ -95,14 +548,9 @@ body {
 
   overflow: hidden;
 
-  border-radius: 26px;
+  border-radius: 25px;
 
-  background:
-    radial-gradient(
-      circle at center,
-      #17121f,
-      #050506 70%
-    );
+  background: #050506;
 
   border:
     1px solid
@@ -128,8 +576,14 @@ body {
 }
 
 .overlay {
+  z-index: 6;
+
   pointer-events: none;
 }
+
+/* =========================================================
+   WELCOME
+   ========================================================= */
 
 .welcome {
   position: absolute;
@@ -139,6 +593,7 @@ body {
   z-index: 10;
 
   display: flex;
+
   flex-direction: column;
 
   align-items: center;
@@ -161,10 +616,10 @@ body {
 
   place-items: center;
 
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
 
-  margin-bottom: 23px;
+  margin-bottom: 20px;
 
   border-radius: 50%;
 
@@ -172,93 +627,330 @@ body {
     1px solid
     rgba(196, 181, 253, 0.3);
 
-  font-size: 31px;
-
-  box-shadow:
-    0 0 40px
-    rgba(196, 181, 253, 0.1);
+  font-size: 29px;
 }
 
 .welcome h2 {
   margin: 0 0 11px;
 
-  font-size: 31px;
+  color: white;
+
+  font-size: 30px;
+
   font-weight: 400;
 }
 
 .welcome p {
-  max-width: 450px;
+  max-width: 520px;
 
   margin:
     0
     0
-    28px;
+    27px;
 
   color: #96919d;
 
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-button {
+.enterButton {
   border: none;
-
-  border-radius: 999px;
 
   padding: 14px 28px;
 
-  background: #ffffff;
-  color: #111111;
+  border-radius: 999px;
+
+  background: white;
+
+  color: #111;
 
   font-size: 14px;
+
   font-weight: 600;
 
   cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
 }
 
-button:hover {
-  transform: translateY(-2px);
+/* =========================================================
+   CHORD WHEEL
+   ========================================================= */
+
+.chordLayer {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 5;
+
+  pointer-events: none;
+}
+
+.chordConnections {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+.chordConnections polygon {
+  fill:
+    rgba(139, 92, 246, 0.025);
+
+  stroke:
+    rgba(196, 181, 253, 0.42);
+
+  stroke-width: 1.2px;
+
+  vector-effect:
+    non-scaling-stroke;
+
+  stroke-linejoin: round;
+
+  filter:
+    drop-shadow(
+      0 0 6px
+      rgba(139, 92, 246, 0.2)
+    );
+}
+
+/* =========================================================
+   CHORDS
+   ========================================================= */
+
+.chordPad {
+  position: absolute;
+
+  width: 54px;
+  height: 54px;
+
+  transform:
+    translate(-50%, -50%);
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.24);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(17, 14, 24, 0.72),
+      rgba(6, 5, 10, 0.42)
+    );
+
+  backdrop-filter:
+    blur(5px);
+
+  color:
+    rgba(255, 255, 255, 0.82);
+
+  font-size: 14px;
+
+  transition:
+    transform 0.13s ease,
+    border-color 0.13s ease,
+    background 0.13s ease,
+    box-shadow 0.13s ease;
+}
+
+.chordPad::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 5px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(196, 181, 253, 0.11);
+}
+
+.chordPad span {
+  position: relative;
+
+  z-index: 2;
+}
+
+.chordPad.active {
+  transform:
+    translate(-50%, -50%)
+    scale(1.18);
+
+  color: white;
+
+  border-color:
+    rgba(196, 181, 253, 1);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(130, 91, 215, 0.68),
+      rgba(47, 31, 75, 0.6)
+    );
 
   box-shadow:
-    0 10px 35px
-    rgba(255, 255, 255, 0.15);
+    0 0 20px
+      rgba(139, 92, 246, 0.7),
+    0 0 48px
+      rgba(139, 92, 246, 0.28);
+}
+
+/* =========================================================
+   NEUTRAL
+   ========================================================= */
+
+.neutralZone {
+  position: absolute;
+
+  width: 70px;
+  height: 70px;
+
+  transform:
+    translate(-50%, -50%);
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  border:
+    1px dashed
+    rgba(255, 255, 255, 0.22);
+
+  background:
+    rgba(8, 7, 12, 0.22);
+
+  backdrop-filter:
+    blur(3px);
+
+  color:
+    rgba(255, 255, 255, 0.45);
+}
+
+.neutralZone span {
+  transform:
+    translateY(-7px);
+
+  font-size: 7px;
+
+  letter-spacing: 1.5px;
+}
+
+.neutralDot {
+  position: absolute;
+
+  left: 50%;
+  top: 56%;
+
+  width: 6px;
+  height: 6px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(196, 181, 253, 0.82);
+
+  box-shadow:
+    0 0 14px
+    rgba(196, 181, 253, 0.72);
+}
+
+.neutralZone.active {
+  border-color:
+    rgba(196, 181, 253, 0.8);
+
+  background:
+    rgba(139, 92, 246, 0.14);
+
+  box-shadow:
+    0 0 25px
+    rgba(139, 92, 246, 0.22);
+}
+
+.wheelHint {
+  position: absolute;
+
+  bottom: 4%;
+
+  transform:
+    translateX(-50%);
+
+  color:
+    rgba(255, 255, 255, 0.3);
+
+  font-size: 7px;
+
+  letter-spacing: 1.6px;
+
+  white-space: nowrap;
 }
 
 footer {
-  margin-top: 17px;
+  margin-top: 14px;
 
   text-align: center;
 
   color: #53505a;
 
-  font-size: 11px;
+  font-size: 10px;
 
   letter-spacing: 1.5px;
 }
 
+@media (max-width: 1100px) {
+  .topbar {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+  }
+
+  .topControls {
+    width: 100%;
+
+    justify-content:
+      flex-start;
+  }
+
+  .conductorPanel {
+    flex-wrap: wrap;
+  }
+}
+
 @media (max-width: 700px) {
   .app {
-    width: 96vw;
-    padding-top: 18px;
+    width: 97vw;
   }
 
-  .topbar {
-    align-items: flex-start;
-    gap: 15px;
+  .branding h1 {
+    font-size: 21px;
   }
 
-  .topbar h1 {
-    font-size: 20px;
+  .chordPad {
+    width: 48px;
+    height: 48px;
+
+    font-size: 12px;
   }
 
-  .status {
-    font-size: 10px;
-  }
-
-  .welcome h2 {
-    font-size: 24px;
+  .neutralZone {
+    width: 62px;
+    height: 62px;
   }
 }

@@ -1,75 +1,69 @@
-# React + TypeScript + Vite
+# ChordSpace 🎼
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**ChordSpace** is a browser-based spatial musical instrument that lets you play chords and conduct a virtual orchestra using your hands through a webcam.
 
-Currently, two official plugins are available:
+No MIDI controller or special hardware is required — just a browser and camera.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## How it works
 
-## React Compiler
+ChordSpace tracks two hands using computer vision.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Chord Hand
+Move your index finger around the six-part chord wheel.
 
-## Expanding the ESLint configuration
+- Each sector plays a chord in the selected key
+- Slide directly between connected chord regions
+- Move into the centre **Neutral** zone to stop the chord
+- Choose either the left or right hand as the chord hand
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Conductor Hand
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Your second hand controls the orchestra.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+**Finger count controls orchestra size:**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Fingers | Orchestra |
+|---|---|
+| 0 | Silence |
+| 1 | Piano |
+| 2 | Piano + Sustained Strings |
+| 3 | + Cello Pizzicato |
+| 4 | + Violin Spiccato + French Horn |
+| 5 | + Violin Tremolo |
 
-```
+**Hand height controls dynamics:**
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+- Lower hand → softer
+- Higher hand → stronger
+- Movement is smoothed to create continuous swells
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Both hands must be visible for sound to play.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Features
 
-```
+- Webcam-based hand tracking
+- 12 major keys
+- Six diatonic chord regions
+- Continuous connected chord wheel
+- Real orchestral sample playback
+- Dynamic orchestra layering
+- Finger-count gesture recognition
+- Conductor-style dynamic control
+- Two-hand safety system
+- Runs entirely in the browser
+
+## Technology
+
+- React
+- TypeScript
+- Vite
+- MediaPipe Tasks Vision
+- Tone.js
+- Web Audio API
+
+## Running locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/balachandarxx/chordspace.git
